@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2023/5/11 21:35
 # @Author  : 日积跬步
-# @File    : class.py.py
+# @File    : class8.py.py
 
 """类属性 类方法 静态方法 使用"""
 
