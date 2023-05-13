@@ -8,12 +8,14 @@
 
 
 class Student(object):
+    # 用于创建对象
     def __new__(cls, *args, **kwargs):
         print('__new__ 方法被调用了, cls 的 id值 为: {0}'.format(id(cls)))
         obj = super().__new__(cls)
         print('创建的对象 id值 为: {}'.format(id(obj)))
         return obj
 
+    # 对创建的对象进行初始化-属性赋值
     def __init__(self, name, age):
         print('__init__ 方法被调用了, self 的 id值 为: {0}'.format(id(self)))
         self.name = name
