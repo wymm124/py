@@ -22,11 +22,14 @@ class C(A, B):
         pass
 
 
+print('特殊属性 __dict__')
 c = C('张三', 18)
 # 实例对象的属性字典
 print(c.__dict__)
 # 类对象的属性字典
 print(C.__dict__)
+
+print('其他的特殊属性')
 # 对象所属的类
 print(c.__class__)
 # 类对象的父类
