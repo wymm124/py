@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2023/5/3 23:27
 # @Author  : 日积跬步
-# @File    : string.py
+# @File    : stringPrac.py
 
 # 字符串的驻留机制（pycharm 对 str 进行了优化）
 print('驻留机制')
