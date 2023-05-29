@@ -26,3 +26,4 @@ class MyContextMan(object):
 
 with MyContextMan() as manager:
     manager.show()
+
