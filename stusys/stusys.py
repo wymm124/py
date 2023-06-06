@@ -4,6 +4,10 @@
 # @Author  : 日积跬步
 # @File    : stusys.py.py
 
+import os
+
+file_name = 'students.txt'
+
 
 def main():
     while True:
@@ -37,7 +41,45 @@ def main():
 
 
 def insert():
-    pass
+    # 列表
+    student_list = []
+    while True:
+        stu_id = input('请输入id：')
+        if not stu_id:
+            break
+        stu_name = input('请输入名字')
+        if not stu_name:
+            break
+        try:
+            english = int(input('请输入english成绩：'))
+            python = int(input('请输入python成绩：'))
+            java = int(input('请输入java成绩：'))
+        except:
+            print('非法成绩')
+            continue
+        # 将学生信息放入字典中
+        stu = {'id': stu_id, 'name': stu_name, 'english': english, 'python': python, 'java': java}
+        # 将学生放入集合中
+        student_list.append(stu)
+        continue_ans = input('是否继续y/n')
+        if 'y' == continue_ans:
+            continue
+        else:
+            break
+
+    # 调用 save函数 保存到文件
+    save(student_list)
+    print('录入结束')
+
+
+def save(lst):
+    try:
+        stu_txt = open(file_name, 'a', encoding='utf-8')
+    except:
+        stu_txt = open(file_name, 'w', encoding='utf-8')
+    for item in lst:
+        stu_txt.write(str(item) + '\n')
+    stu_txt.close()
 
 
 def search():
@@ -45,7 +87,39 @@ def search():
 
 
 def delete():
-    pass
+    while True:
+        del_stu_id = input('请输入要删除学生的id：')
+        if del_stu_id != '':
+            if os.path.exists(file_name):
+                with open(file_name, 'r', encoding='utf-8') as r_file:
+                    stu_old = r_file.readlines()
+            else:
+                stu_old = []
+            flag = False
+            if stu_old:
+                with open(file_name, 'w', encoding='utf-8') as w_file:
+                    d = {}
+                    for item in stu_old:
+                        d = dict(eval(item))
+                        if d['id'] != del_stu_id:
+                            w_file.write(item)
+                        else:
+                            flag = True
+                    if flag:
+                        print('已删除指定学生')
+                    else:
+                        print(f'没有找到id为{del_stu_id}的学生')
+            else:
+                print('没有学生信息')
+                break
+            # 删除完毕后重新展示学生信息
+        show()
+        answer = input('是否继续删除y/n')
+        if 'y' == answer:
+            continue
+        else:
+            break
+
 
 
 def modify():
@@ -61,7 +135,8 @@ def total():
 
 
 def show():
-    pass
+    print('show msg')
+
 
 
 def menu():
