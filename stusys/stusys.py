@@ -121,9 +121,44 @@ def delete():
             break
 
 
-
 def modify():
-    pass
+    show()
+    if os.path.exists(file_name):
+        with open(file_name, 'r', encoding='utf-8') as r_file:
+            stu_old = r_file.readlines()
+    else:
+        print('不存在学生信息')
+        return
+    modify_stu = input('请输入要修改学生的id：')
+    flag = True
+    with open(file_name, 'w', encoding='utf-8') as w_file:
+        for item in stu_old:
+            d = dict(eval(item))
+            if d['id'] == modify_stu:
+                flag = False
+                print('找到了，可以进行修改')
+                while True:
+                    try:
+                        d['name'] = input('请输入姓名：')
+                        d['english'] = input('请输入英语成绩：')
+                        d['java'] = input('请输入java成绩：')
+                        d['python'] = input('请输入python成绩：')
+                    except:
+                        print('输入有误，重新输入')
+                    else:
+                        break
+                w_file.write(str(d) + '\n')
+                print('修改成功')
+                break
+            else:
+                w_file.write(str(d) + '\n')
+        if flag:
+            print('没有找到学生')
+    answer = input('是否继续修改y/n')
+    if 'y' == answer:
+        modify()
+    else:
+        return
 
 
 def sort():
@@ -136,7 +171,6 @@ def total():
 
 def show():
     print('show msg')
-
 
 
 def menu():
