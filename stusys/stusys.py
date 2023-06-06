@@ -83,7 +83,27 @@ def save(lst):
 
 
 def search():
-    pass
+    stu_query = []
+    while True:
+        flag = False
+        if os.path.exists(file_name):
+            id = input('请输入学生id：')
+            with open(file_name, 'r', encoding='utf-8') as r_file:
+                stu_old = r_file.readlines()
+                for item in stu_old:
+                    d = dict(eval(item))
+                    if (d['id']) == id:
+                        flag = True
+                        print(str(d))
+            if not flag:
+                print('没有找到学生信息')
+        else:
+            print('没有学生信息')
+        answer = input('是否继续查询y/n')
+        if 'y' == answer:
+            continue
+        else:
+            break
 
 
 def delete():
@@ -166,11 +186,25 @@ def sort():
 
 
 def total():
-    pass
+    if os.path.exists(file_name):
+        with open(file_name, 'r', encoding='utf-8') as r_file:
+            stu_old = r_file.readlines()
+            if stu_old:
+                print('一共有{}名学生'.format(len(stu_old)))
+            else:
+                print('还没有录入学生信息')
+    else:
+        print('没有学生信息')
 
 
 def show():
-    print('show msg')
+    if os.path.exists(file_name):
+        with open(file_name, 'r', encoding='utf-8') as r_file:
+            stu_old = r_file.readlines()
+            for item in stu_old:
+                print(item)
+    else:
+        print('没有学生信息')
 
 
 def menu():
