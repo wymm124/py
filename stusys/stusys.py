@@ -182,7 +182,21 @@ def modify():
 
 
 def sort():
-    pass
+    show()
+    if os.path.exists(file_name):
+        with open(file_name, 'r', encoding='utf-8') as r_file:
+            stu_old = r_file.readlines()
+        stu_new = []
+        for item in stu_old:
+            d = dict(eval(item))
+            stu_new.append(d)
+    else:
+        return
+    # 默认用py成绩排序
+    stu_new.sort(key=lambda x: int(x['python']), reverse=False)
+    print('已经完成排序')
+    for i in stu_new:
+        print(i)
 
 
 def total():

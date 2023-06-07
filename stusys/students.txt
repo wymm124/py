@@ -1,3 +1,3 @@
-{'id': '101', 'name': 'a', 'english': '20', 'python': '20', 'java': '20'}
+{'id': '101', 'name': 'a', 'english': '20', 'python': '200', 'java': '20'}
 {'id': '102', 'name': 'bb', 'english': 40, 'python': 50, 'java': 60}
 {'id': '103', 'name': 'cc', 'english': 67, 'python': 78, 'java': 89}
