@@ -4,6 +4,12 @@
 # @Author  : 日积跬步
 # @File    : generator.py
 
+"""
+Iterable：可迭代对象，可用for循环的对象，列表、元组、集合、字典、字符串
+Iterator：迭代器，通过next方法获取下一个元素的对象，generator、带yield的generator function
+"""
+
+
 # 1、生成器：保存的是算法，当获取的时候才计算出来下一个值，不用创建完整的list，节省空间
 def prac_generator():
     gene = (i for i in range(5))
